@@ -34,7 +34,7 @@ class Tictactoe
     end
 
     @board.each do |row|
-      if row.join =~ /XXX/ || row.join =~ /OOO/
+      if row.join == "XXX" || row.join == "OOO"
       	puts "#{current_player} wins!"
       	show_board
       	@game_on = false
@@ -42,7 +42,7 @@ class Tictactoe
     end
 
     columns.each do |col|
-      if col.join =~ /XXX/ || col.join =~ /OOO/
+      if col.join == "XXX" || col.join == "OOO"
       	puts "#{current_player} wins!"
       	show_board
       	@game_on = false
@@ -50,7 +50,7 @@ class Tictactoe
     end
 
     diagonals.each do |diag|
-      if diag.join =~ /XXX/ || diag.join =~ /OOO/
+      if diag.join == "XXX" || diag.join == "OOO"
       	puts "#{current_player} wins!"
       	show_board
       	@game_on = false
