@@ -22,20 +22,50 @@ class Connect_4
 
   def check_winner
     columns = [[], [], [], [], [], []]
-    forward_diagonals = [[@board[0][0], @board[1][1], @board[2][2], @board[3][3], @board[4][4], @board[5][5]],
-      [@board[0][1], @board[1][2], @board[2][3], @board[3][4], @board[4][5]],
-      [@board[0][2], @board[1][3], @board[2][4], @board[3][5]],
-      [@board[1][0], @board[2][1], @board[3][2], @board[4][3], @board[5][4], @board[6][5]],
-      [@board[2][0], @board[3][1], @board[4][2], @board[5][3], @board[6][4]],
-      [@board[3][0], @board[4][1], @board[5][2], @board[6][3]]
-    ]
-    reverse_diagonals = [[@board[0][3], @board[1][2], @board[2][1], @board[3][0]],
-      [@board[0][4], @board[1][3], @board[2][2], @board[3][1], @board[4][0]],
-      [@board[0][5], @board[1][4], @board[2][3], @board[3][2], @board[4][1], @board[5][0]],
-      [@board[1][5], @board[2][4], @board[3][3], @board[4][2], @board[5][1], @board[6][0]],
-      [@board[2][5], @board[3][4], @board[4][3], @board[5][2], @board[6][1]],
-      [@board[3][5], @board[4][4], @board[5][3], @board[6][2]]
-    ]
+
+    # Test code to fill diagonals, not functional yet
+    forward_diagonals = [ [], [], [], [], [], [] ]
+    reverse_diagonals = [ [], [], [], [], [], [] ]
+
+    @board.each do |row|
+      row.each do 
+        i = 0
+        while i < @board.length
+          j = 0
+          while j < @board[i].length
+            if i == j
+              forward_diagonals[0] << @board[i][j]
+            elsif i == j - 1
+              forward_diagonals[1] << @board[i][j]
+            elsif i == j - 2
+              forward_diagonals[2] << @board[i][j]
+            elsif i == j + 1
+              forward_diagonals[3] << @board[i][j]
+            elsif i == j + 2
+              forward_diagonals[4] << @board[i][j]
+            elsif i == j + 3
+              forward_diagonals[5] << @board[i][j]
+            end
+
+            if i + j == 3
+              reverse_diagonals[0] << @board[i][j]
+            elsif i + j == 4
+              reverse_diagonals[1] << @board[i][j]
+            elsif i + j == 5
+              reverse_diagonals[2] << @board[i][j]
+            elsif i + j == 6
+              reverse_diagonals[3] << @board[i][j]
+            elsif i + j == 7
+              reverse_diagonals[4] << @board[i][j]
+            elsif i + j = 8
+              reverse_diagonals[5] << @board[i][j]
+            end
+            j = j + 1
+          end
+          i = i + 1
+        end
+      end
+    end
     
     @board.each do |row|
       if row.join =~ /XXXX/ || row.join =~ /OOOO/
@@ -124,3 +154,4 @@ class Connect_4
   end
 
 end
+
